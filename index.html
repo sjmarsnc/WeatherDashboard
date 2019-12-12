@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap and Font Awesome CSS -->
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Weather Dashboard </title>
+</head>
+
+<body>
+    <h1 class="text-center  w-100 p-4">Weather Dashboard</h1>
+    <div class="container">
+        <div class="row m-5 w-100">
+
+            <div class="col col-5 col-sm-4 p-3" id="search-column">
+                <div class="row m-1 pb-5" id="search-specs">
+                    <form>
+                        <h3>Search for a city:</h3>
+                        <input class="m-2" length="40" id="search-city"></input>
+                        <button id="get-city"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+                <div class="row btn-group-vertical w-100 p-3" id="past-cities">
+                               
+                     
+                </div>
+            </div>
+
+            <div class="col col-7 col-sm-8 p-5" id="current-city">
+                <div class="row">
+                    <div class="card" id="current-weather">
+                        <h2 id="city-name"></h2>
+                        <h2 id="weather-icon"></h2> // make this card header?
+                    </div>
+                    <div class="card-content" id="current-weather-details">
+                        current weather
+                    </div>
+                </div>
+                <div class="row" id="forecast">
+                    <h2>5-Day Forecast:</h2> <br>
+                    <span> cards for forecast? </span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- moment.js -->
+    <!-- <script src="./assets/scripts/moment.js"></script> -->
+    <!-- my JavaScript -->
+    <script src="./assets/scripts/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+.container {
+    max-width: 1200px !important;  
+  
+}
+
+h1 {
+    background-color: midnightblue;
+    color: white; 
+}
+
+.city-button {
+    background-color: white !important; 
+    
+}
+
+#search-column {
+    background-color: #f4f4f4; 
+    height: 100%;  
+}
+
+#search-city, #get-city { 
+    border-radius: 5px; 
+}
+
+/* use bootstrap classes instead?  
+ btn-danger
+ btn-warning
+ btn-success 
+ */
+
+.uvc-danger { 
+    background-color: red;
+    color: white;
+}
+
+.uvc-warn { 
+    background-color: darkorange; 
+    color: white;
+}
+
+.uvc-safe { 
+    background-color: lightgreen; 
+    color: white;
+}
