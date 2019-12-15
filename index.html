@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap and Font Awesome CSS -->
-    <link rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -16,37 +14,86 @@
 </head>
 
 <body>
-    <h1 class="text-center  w-100 p-4">Weather Dashboard</h1>
+    <h1 class="text-center  w-100 p-3 d-none d-sm-block">Weather Dashboard</h1>
+    <h3 class="text-center w-100 p-1 d-block d-sm-none" id="alt-heading">Weather</h2>
     <div class="container">
-        <div class="row m-5 w-100">
+        <div class="row p-2 w-100">
 
-            <div class="col col-5 col-sm-4 p-3" id="search-column">
-                <div class="row m-1 pb-5" id="search-specs">
+            <div class="col col-4 col-sm-3 pt-3" id="search-column">
+                <div class="row m-1 pb-3" id="search-specs">
                     <form>
-                        <h3>Search for a city:</h3>
-                        <input class="m-2" length="40" id="search-city"></input>
-                        <button id="get-city"><i class="fa fa-search"></i></button>
+                        <h4>Search for a city:</h4>
+                        <input class="mt-2 pb-1 pt-1" length="40" id="search-city"></input>
+                        <button class="btn btn-sm btn-primary" id="get-city"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
-                <div class="row btn-group-vertical w-100 p-3" id="past-cities">
-                               
-                     
+                <div class="row btn-group-vertical w-100 pl-3 pb-3" id="past-cities">
+
+
                 </div>
             </div>
 
-            <div class="col col-7 col-sm-8 p-5" id="current-city">
+            <div class="col col-8 col-sm-9 pl-5" id="current-city">
                 <div class="row">
-                    <div class="card" id="current-weather">
-                        <h2 id="city-name"></h2>
-                        <h2 id="weather-icon"></h2> // make this card header?
-                    </div>
-                    <div class="card-content" id="current-weather-details">
-                        current weather
+                    <div class="card w-100 p-4" id="current-weather">
+                        <h2 class="card-title"><span id="city-name"></span>&nbsp;&nbsp
+                            <img id="weather-icon"></img>
+                        </h2>
+                        <div class="card-content" id="current-weather-details">
+                            <div class="font-weight-bold">Temperature:&nbsp;<span id="current-temp"></span> </div>
+                            <div class="font-weight-bold">Humidity:&nbsp;<span id="current-humidity"> </span></div>
+                            <div class="font-weight-bold">Wind Speed:&nbsp;<span id="current-windspeed"> </span></div>
+                            <div class="font-weight-bold">UV Index:&nbsp;<span id="current-uv-index"> </span></div>
+
+                        </div>
                     </div>
                 </div>
-                <div class="row" id="forecast">
-                    <h2>5-Day Forecast:</h2> <br>
-                    <span> cards for forecast? </span>
+                <hr>
+                <h2 class="row">5-Day Forecast:</h2>  
+                <div class="row">
+                    <div class="row" id="forecast-cards">
+
+                        <!-- <div class="card forecast">
+                            <h4 class='card-header'>date</h4>
+                            <div class='card-content'>
+                                <p>icon</p>
+                                <p>temp</p>
+                                <p>humidity</p>
+                            </div>
+                        </div>
+                        <div class="card forecast">
+                            <h4 class='card-header'>date</h4>
+                            <div class='card-content'>
+                                <p>icon</p>
+                                <p>temp</p>
+                                <p>humidity</p>
+                            </div>
+                        </div>
+                        <div class="card forecast">
+                            <h4 class='card-header'>date</h4>
+                            <div class='card-content'>
+                                <p>icon</p>
+                                <p>temp</p>
+                                <p>humidity</p>
+                            </div>
+                        </div>
+                        <div class="card forecast">
+                            <h4 class='card-header'>date</h4>
+                            <div class='card-content'>
+                                <p>icon</p>
+                                <p>temp</p>
+                                <p>humidity</p>
+                            </div>
+                        </div>
+                        <div class="card forecast">
+                            <h4 class='card-header'>date</h4>
+                            <div class='card-content'>
+                                <p>icon</p>
+                                <p>temp</p>
+                                <p>humidity</p>
+                            </div>
+                        </div> -->
+                    </div>
                 </div>
             </div>
 
@@ -61,6 +108,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- moment.js -->
+    <script src="./assets/scripts/moment.js"></script>
     <!-- <script src="./assets/scripts/moment.js"></script> -->
     <!-- my JavaScript -->
     <script src="./assets/scripts/script.js"></script>

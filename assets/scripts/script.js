@@ -1,11 +1,7 @@
 
-
-
-
-
-
 var APIKey = "b8030074488a520a4b5c546d49797659";
-var cityName = "";  // get current location? 
+var cityName = "";  // default to current location? 
+var currentDate = moment().format('dddd[,] MMMM DD[,] YYYY');
 
 
 $("#get-city").on("click", function () {
@@ -41,20 +37,35 @@ function getCityData(cityName) {
             console.log(response);
 
             // Transfer content to HTML
-            $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-            $(".wind").text("Wind Speed: " + response.wind.speed);
-            $(".humidity").text("Humidity: " + response.main.humidity);
-            $(".temp").text("Temperature (F) " + response.main.temp);
+            
+            $("#city-name").text(cityName + " Weather on " + currentDate);
+            //  need icon  
+            $("#current-temp").text(response.main.temp); 
+            $("#current-humidity").text(response.main.humidity + "%");
+            $("#current-windspeed").text(response.wind.speed + "MPH ");
 
-            // Converts the temp to Kelvin with the below formula
-            var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-            $(".tempF").text("Temperature (Kelvin) " + tempF);
-
-            // Log the data in the console as well
-            console.log("Wind Speed: " + response.wind.speed);
-            console.log("Humidity: " + response.main.humidity);
-            console.log("Temperature (F): " + response.main.temp);
-
+            // get UV info, setting class for background color  
+            var uvURL = "http://samples.openweathermap.org/data/2.5/uvi?lat=" + 
+                        response.coord.lat + 
+                       "&lon=" +  response.coord.lon + "&appid=" + APIKey;
+            $.ajax({
+                url: uvURL,
+                method: "GET" 
+            }).then(function (response) { 
+                var uvValue = response.value;
+                var uvDisplay = $("#current-uv-index");  
+                uvDisplay.text(uvValue); 
+                uvValue = parseFloat(uvValue); 
+                if (uvValue < 3) {
+                    // set color to green 
+                }
+                else if (uvValue < 8) {
+                    // set color to orange
+                }
+                else if (uvValue >= 8) { 
+                    // set color to red 
+                }
+            })
 
             var cityId = response.id;
             var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityId +
@@ -69,6 +80,24 @@ function getCityData(cityName) {
 
                     console.log(forecastURL);
                     console.log(response);
+                    
+                    $("#forecast-cards").empty();  
+                    for (var i = 0; i < response.list.length; i++) {
+                        if (response.list[i].dt_txt.indexOf("15:00:00") !== -1) {
+                            var dayCard = $("<div>").addClass("card m-2 p-2 forecast"); 
+                            var dateHeader = $("<h6>"); 
+                            dateHeader.text(response.list[i].dt_txt.slice(0,10));  
+                            dayCard.append(dateHeader); 
+                            // need to add icon 
+                            var cardContent = $("<div>").addClass("card-content");
+                            cardContent.html("Temp:&nbsp;" + response.list[i].main.temp +
+                                 "<br>Humidity: &nbsp;" + response.list[i].main.humidity + "%");
+                            dayCard.append(cardContent); 
+                            $("#forecast-cards").append(dayCard);  
+                        }
+
+                    }
+
 
                 });
 

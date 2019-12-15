@@ -3,7 +3,7 @@
   
 }
 
-h1 {
+h1, #alt-heading {
     background-color: midnightblue;
     color: white; 
 }
@@ -20,6 +20,14 @@ h1 {
 
 #search-city, #get-city { 
     border-radius: 5px; 
+}
+
+#current-weather-details {
+    line-height: 3;   
+}
+
+.forecast { 
+    background-color: lightsteelblue !important; 
 }
 
 /* use bootstrap classes instead?  
