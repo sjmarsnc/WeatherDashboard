@@ -10,6 +10,8 @@ h1, #alt-heading {
 
 .city-button {
     background-color: white !important; 
+    text-align: left; 
+    text-transform: capitalize;  
     
 }
 
@@ -20,6 +22,8 @@ h1, #alt-heading {
 
 #search-city, #get-city { 
     border-radius: 5px; 
+    text-transform: capitalize;
+    
 }
 
 #current-weather-details {
@@ -30,23 +34,6 @@ h1, #alt-heading {
     background-color: lightsteelblue !important; 
 }
 
-/* use bootstrap classes instead?  
- btn-danger
- btn-warning
- btn-success 
- */
-
-.uvc-danger { 
-    background-color: red;
-    color: white;
-}
-
-.uvc-warn { 
-    background-color: darkorange; 
-    color: white;
-}
-
-.uvc-safe { 
-    background-color: lightgreen; 
-    color: white;
+.heading { 
+    font-weight: bold; 
 }
