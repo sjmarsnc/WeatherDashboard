@@ -1,12 +1,36 @@
 
 var APIKey = "b8030074488a520a4b5c546d49797659";
-var cityName = "";  // default to current location? 
+var weatherCities = [""]; 
+var lastCityIndex = 0;  
+
+// get any previously searched cities and last used from local storage 
+
+var storedCities = localStorage.getItem("weatherCities"); 
+console.log(storedCities); 
+if (storedCities === null) { 
+    // start with Raleigh for now - bonus would be current location 
+    weatherCities = ["Raleigh"];
+}
+else { 
+    weatherCities = JSON.parse(storedCities); 
+    lastCityIndex = document.localStorage.getItem("lastCityIndex"); 
+}
+for (var i = 0; i < weatherCities.length; i++) {
+    var newCityButton = $("<button>").addClass("btn city-button btn-outline-secondary pt-2 pb-2 text-align-left"); 
+    newCityButton.attr("data-city", weatherCities[i]);
+    newCityButton.text(weatherCities[i]);
+    $("#past-cities").append(newCityButton); 
+}
+
+var cityName = weatherCities[lastCityIndex];   
 var currentDate = moment().format('dddd[,] MMMM DD[,] YYYY');
+var shortCurrentDate = moment().format('MM[/]DD[/]YYYY')
 
 
 $("#get-city").on("click", function () {
     event.preventDefault();
     cityName = $("#search-city").val();
+    // set appropriate case 
     cityName = cityName.charAt(0).toUpperCase() + cityName.slice(1); 
     getCityData(cityName);
     addCity(cityName);
@@ -57,6 +81,8 @@ function getCityData(cityName) {
 
             // Transfer content to HTML
             $("#city-name").text(cityName + ": " + currentDate);
+            $("#short-city-name").text(cityName + ": " + shortCurrentDate); 
+
             var weatherData = response.weather[0].main.toLowerCase();  
             var iconSrc = 'https://openweathermap.org/img/wn/' + 
                    response.weather[0].icon + "@2x.png"; 
@@ -133,15 +159,27 @@ function getCityData(cityName) {
 
 function addCity(cityName) {
     // see if already in list of cities, add button only if not 
-    var newCityButton = $("<button>").addClass("btn city-button btn-outline-secondary pt-2 pb-2 text-align-left");
-    newCityButton.attr("data-city", cityName);
-    newCityButton.text(cityName);
-    $("#past-cities").prepend(newCityButton);
+    if (weatherCities.indexOf(cityName) === -1) {
+        var newCityButton = $("<button>").addClass("btn city-button btn-outline-secondary pt-2 pb-2 text-align-left");
+        newCityButton.attr("data-city", cityName);
+        newCityButton.text(cityName);
+        $("#past-cities").prepend(newCityButton);
+        weatherCities.splice(0, 0, cityName); 
+        // save new list of cities 
+        storedCities = JSON.stringify(weatherCities); 
+        localStorage.setItem("weatherCities",storedCities); 
+    }
 }
 
-getCityData("Raleigh");
-addCity("Raleigh"); 
-
-if (navigator.geolocation) { 
-    navi
+function buildButtons() {
+    $("#past-cities").empty();  // not necessary?  
+    for (var i = 0; i < weatherCities.length; i++) {
+        var newCityButton = $("<button>").addClass("btn city-button btn-outline-secondary pt-2 pb-2 text-align-left"); 
+        newCityButton.attr("data-city", weatherCities[i]);
+        newCityButton.text(weatherCities[i]);
+        $("#past-cities").append(newCityButton); 
+    }
 }
+
+buildButtons();  
+getCityData(cityName); 
