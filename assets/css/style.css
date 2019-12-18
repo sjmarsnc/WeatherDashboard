@@ -8,11 +8,15 @@ h1, #alt-heading {
     color: white; 
 }
 
-.city-button {
+.city-button, #city-name
+ {
     background-color: white !important; 
     text-align: left; 
-    text-transform: capitalize;  
-    
+    text-transform: capitalize;      
+}
+
+.city-button::active {
+    color: #bbb; 
 }
 
 #search-column {
@@ -22,8 +26,7 @@ h1, #alt-heading {
 
 #search-city, #get-city { 
     border-radius: 5px; 
-    text-transform: capitalize;
-    
+    text-transform: capitalize; 
 }
 
 #current-weather-details {
@@ -36,4 +39,8 @@ h1, #alt-heading {
 
 .heading { 
     font-weight: bold; 
+}
+
+#error-message {
+    color: red; 
 }

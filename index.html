@@ -16,68 +16,74 @@
 <body>
     <h1 class="text-center  w-100 p-3 d-none d-sm-block">Weather Dashboard</h1>
     <h3 class="text-center w-100 p-1 d-block d-sm-none" id="alt-heading">Weather</h2>
-    <div class="container">
-        <div class="row p-2 w-100">
+        <div class="container">
+            <div class="row p-2 w-100">
 
-            <div class="col col-12 col-sm-4 col-md-3 pt-3" id="search-column">
-                <div class="row m-1 pb-3" id="search-specs">
-                    <form>
-                        <h4>Search for a city:</h4>
-                        <input class="mt-2 pb-1 pt-1" length="40" id="search-city"></input>
-                        <button class="btn btn-sm btn-primary" id="get-city"><i class="fa fa-search"></i></button>
-                    </form>
+                <div class="col col-12 col-sm-4 col-md-3 pt-3" id="search-column">
+                    <div class="row m-1 pb-3" id="search-specs">
+                        <form>
+                            <h4>Search for a city:</h4>
+                            <input class="mt-2 pb-1 pt-1" length="40" id="search-city"></input>
+                            <button class="btn btn-sm btn-primary" id="get-city"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div id="error-block" class="row">
+                        <span id="error-message" class="d-none pb-2"></span>
+                    </div>
+                    <div class="row btn-group-vertical w-100 pl-3 pb-3" id="past-cities">
+
+
+                    </div>
+
+                    <div class="row ml-1 pl-2 pb-3">
+                        <button class="row btn btn-secondary pl-3 pb-2" id="clear-past-cities">Clear Saved Cities</button>
+                    </div>
+
                 </div>
-                <div id="error-block" class="row">
-                    <span id="error-message"></span>
-                </div>
-                <div class="row btn-group-vertical w-100 pl-3 pb-3" id="past-cities">
 
+                <div class="col col-12 col-sm-8 col-med-9 pl-5 d-none" id="current-city">
+                    <div class="row">
+                        <div class="card shadown w-100 p-4" id="current-weather">
+                            <h2 class="card-title">
+                                <span class="d-none d-md-block" id="city-name"></span>
+                                <span class="d-block d-md-none" id="short-city-name"></span>
+                                &nbsp;&nbsp
+                                <img id="weather-icon"></img>
+                            </h2>
+                            <div class="card-content" id="current-weather-details">
+                                <div class="font-weight-bold">Temperature:&nbsp;<span id="current-temp"></span> </div>
+                                <div class="font-weight-bold">Humidity:&nbsp;<span id="current-humidity"> </span></div>
+                                <div class="font-weight-bold">Wind Speed:&nbsp;<span id="current-windspeed"> </span>
+                                </div>
+                                <div class="font-weight-bold">UV Index:&nbsp;<span id="current-uv-index"> </span></div>
 
-                </div>
-            </div>
-
-            <div class="col col-12 col-sm-8 col-med-9 pl-5 d-none" id="current-city">
-                <div class="row">
-                    <div class="card shadown w-100 p-4" id="current-weather">
-                        <h2 class="card-title">
-                             <span class="d-none d-md-block" id="city-name"></span>
-                             <span class="d-block d-md-none" id="short-city-name"></span> 
-                             &nbsp;&nbsp
-                            <img id="weather-icon"></img>
-                        </h2>
-                        <div class="card-content" id="current-weather-details">
-                            <div class="font-weight-bold">Temperature:&nbsp;<span id="current-temp"></span> </div>
-                            <div class="font-weight-bold">Humidity:&nbsp;<span id="current-humidity"> </span></div>
-                            <div class="font-weight-bold">Wind Speed:&nbsp;<span id="current-windspeed"> </span></div>
-                            <div class="font-weight-bold">UV Index:&nbsp;<span id="current-uv-index"> </span></div>
-
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <h2 class="row">5-Day Forecast:</h2>
+                    <div class="row">
+                        <div class="row" id="forecast-cards">
+                            <!-- 5-day forecast cards go here  -->
                         </div>
                     </div>
                 </div>
-                <p></p>
-                <h2 class="row">5-Day Forecast:</h2>  
-                <div class="row">
-                    <div class="row" id="forecast-cards">
-                     <!-- 5-day forecast cards go here  -->
-                    </div>
-                </div>
+
             </div>
 
         </div>
 
-    </div>
- 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <!-- moment.js -->
-    <script src="./assets/scripts/moment.js"></script>
-    <!-- <script src="./assets/scripts/moment.js"></script> -->
-    <!-- my JavaScript -->
-    <script src="./assets/scripts/script.js"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <!-- moment.js -->
+        <script src="./assets/scripts/moment.js"></script>
+        <!-- <script src="./assets/scripts/moment.js"></script> -->
+        <!-- my JavaScript -->
+        <script src="./assets/scripts/script.js"></script>
 </body>
 
 </html>
