@@ -13,7 +13,7 @@ if (storedCities === null) {
 }
 else { 
     weatherCities = JSON.parse(storedCities); 
-    lastCityIndex = document.localStorage.getItem("lastCityIndex"); 
+    lastCityIndex = localStorage.getItem("lastCityIndex"); 
 }
 for (var i = 0; i < weatherCities.length; i++) {
     var newCityButton = $("<button>").addClass("btn city-button btn-outline-secondary pt-2 pb-2 text-align-left"); 
@@ -159,7 +159,8 @@ function getCityData(cityName) {
 
 function addCity(cityName) {
     // see if already in list of cities, add button only if not 
-    if (weatherCities.indexOf(cityName) === -1) {
+    var cityIndex = weatherCities.indexOf(cityName); 
+    if (cityIndex === -1) {
         var newCityButton = $("<button>").addClass("btn city-button btn-outline-secondary pt-2 pb-2 text-align-left");
         newCityButton.attr("data-city", cityName);
         newCityButton.text(cityName);
@@ -168,6 +169,10 @@ function addCity(cityName) {
         // save new list of cities 
         storedCities = JSON.stringify(weatherCities); 
         localStorage.setItem("weatherCities",storedCities); 
+        localStorage.setItem("lastCityIndex",0)
+    }
+    else {
+        localStorage.setItem("lastCityIndex",cityIndex); 
     }
 }
 
