@@ -53,10 +53,6 @@ function getCityData(cityName) {
     .then(function (response) {
         
         addCity(cityName);
-
-        // Log for testing 
-        console.log(weatherURL);
-        console.log("Response: " + response);
         
         // Transfer content to HTML
         $("#city-name").text(cityName + ": " + currentDate);
@@ -71,7 +67,7 @@ function getCityData(cityName) {
         $("#current-windspeed").text(response.wind.speed + " MPH ");
         
         // get UV info, setting class for background color  
-        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?lat=" + 
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?lat=" + 
         response.coord.lat + 
         "&lon=" +  response.coord.lon + "&appid=" + APIKey;
 
@@ -79,7 +75,6 @@ function getCityData(cityName) {
             url: uvURL,
             method: "GET" 
         }).then(function (response) { 
-            console.log(response); 
             var uvValue = response.value;
             var uvDisplay = $("#current-uv-index");  
             uvDisplay.text(uvValue); 
