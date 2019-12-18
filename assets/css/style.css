@@ -1,7 +1,11 @@
+ 
 .container {
     max-width: 1200px !important;  
-  
-}
+    overflow-y: scroll;
+    min-height: 0; 
+ }
+
+
 
 h1, #alt-heading {
     background-color: midnightblue;
