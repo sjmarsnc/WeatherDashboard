@@ -12,7 +12,7 @@ h1, #alt-heading {
     color: white; 
 }
 
-.city-button, #city-name
+.city-button, #city-name, #short-city-name
  {
     background-color: white !important; 
     text-align: left; 
