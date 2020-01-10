@@ -19,8 +19,9 @@ h1, #alt-heading {
     text-transform: capitalize;      
 }
 
-.city-button::active {
-    color: #bbb; 
+.city-button:hover {
+    color: blue !important;
+    border-color: #888 !important;  
 }
 
 #search-column {
