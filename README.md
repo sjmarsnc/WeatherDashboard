@@ -1,4 +1,4 @@
-# Unit 06 Server-Side APIs Homework: Weather Dashboard
+# Weather Dashboard
 
 This project provides a dashboard to see current weather conditions and a 5-day forecast for a city entered by the user.   The application saves
 the cities previously requested by the user in local storage, and when 
